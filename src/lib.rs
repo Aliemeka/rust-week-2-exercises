@@ -33,7 +33,6 @@ pub enum ScriptType {
 }
 
 pub fn classify_script(script: &[u8]) -> ScriptType {
-    // TODO: Match script pattern and return corresponding ScriptType
     match script {
         // Example patterns (these are not actual script patterns, just placeholders)
         // Doc: https://en.bitcoin.it/wiki/Script#Standard_transaction_scripts
@@ -43,11 +42,9 @@ pub fn classify_script(script: &[u8]) -> ScriptType {
     }
 }
 
-// TODO: complete Outpoint tuple struct
 pub struct Outpoint(pub String, pub u32);
 
 pub fn read_pushdata(script: &[u8]) -> &[u8] {
-    // TODO: Return the pushdata portion of the script slice (assumes pushdata starts at index 2)
     &script[2..]
 }
 
@@ -66,17 +63,15 @@ impl Wallet for TestWallet {
 }
 
 pub fn apply_fee(balance: &mut u64, fee: u64) {
-    // TODO: Subtract fee from mutable balance reference
+    // If balance is greater substract, else set to 0
     if *balance >= fee {
         *balance -= fee;
     } else {
-        // Handle case where fee exceeds balance (e.g., set balance to zero or return an error)
         *balance = 0;
     }
 }
 
 pub fn move_txid(txid: String) -> String {
-    // TODO: Return formatted string including the txid for display or logging
     format!("txid: {}", txid)
 }
 
@@ -89,7 +84,6 @@ pub enum Opcode {
 
 impl Opcode {
     pub fn from_byte(byte: u8) -> Result<Self, String> {
-        // TODO: Implement mapping from byte to Opcode variant
         // Opcode doc: https://en.bitcoin.it/wiki/Script#Opcodes
         match byte {
             0xac => Ok(Opcode::OpChecksig), // OP_CHECKSIG
@@ -107,7 +101,5 @@ pub struct UTXO {
 }
 
 pub fn consume_utxo(utxo: UTXO) -> UTXO {
-    // TODO: Implement UTXO consumption logic (if any)
-
     utxo
 }
