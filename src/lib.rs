@@ -34,7 +34,6 @@ pub enum ScriptType {
 
 pub fn classify_script(script: &[u8]) -> ScriptType {
     match script {
-        // Example patterns (these are not actual script patterns, just placeholders)
         // Doc: https://en.bitcoin.it/wiki/Script#Standard_transaction_scripts
         [0x76, 0xa9, ..] => ScriptType::P2PKH, // OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
         [0x00, 0x14, ..] => ScriptType::P2WPKH, // OP_0 <20-byte pubKeyHash>
